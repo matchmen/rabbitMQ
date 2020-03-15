@@ -1,5 +1,6 @@
 package com.mt.server.rabbitMq;
 
+import com.mt.server.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -20,7 +21,7 @@ public class RabbitMQServer {
     public void send() {
 
 
-        rabbitTemplate.convertAndSend("欢迎来到MQ世界");
+        rabbitTemplate.convertAndSend("欢迎来到RabbitMQ世界！");
         log.info("发送成功");
 
     }

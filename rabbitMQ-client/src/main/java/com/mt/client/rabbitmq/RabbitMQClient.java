@@ -22,10 +22,11 @@ public class RabbitMQClient {
     //参考文献：https://blog.csdn.net/more_try/article/details/82804387
 
 
-    @RabbitListener(queues = "queueName")
+    @RabbitListener(queues = "queueName") //配置消费队列名称
     public void consume(String msg,Channel channel, Message message) {
         try {
             log.info("queueName-》received msg:{},msgId:{}", msg,message.getMessageProperties().getDeliveryTag());
+            //手动ack
             channel.basicAck(message.getMessageProperties().getDeliveryTag(),true);
         } catch (Exception e) {
             e.printStackTrace();
@@ -36,9 +37,10 @@ public class RabbitMQClient {
 
 
     @RabbitListener(queues = "queueName2")
-    public void consume1(String msg,Channel channel, Message message) {
+    public void consume1(String msg, Channel channel, Message message) {
         try {
             log.info("queueName2-》received msg:{},msgId:{}", msg,message.getMessageProperties().getDeliveryTag());
+            //手动ack
             channel.basicAck(message.getMessageProperties().getDeliveryTag(),true);
         } catch (Exception e) {
             e.printStackTrace();
