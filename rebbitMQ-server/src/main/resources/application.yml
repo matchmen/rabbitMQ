@@ -1,0 +1,13 @@
+
+spring:
+  rabbitmq:
+    addresses: 127.0.0.1:5672
+    username: guest
+    password: guest
+    template:
+      exchange: 'exchangeName'
+      routing-key: 'routekey'
+      default-receive-queue: 'queueName'
+    virtual-host: test
+server:
+  port: 8090
